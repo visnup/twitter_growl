@@ -1,11 +1,13 @@
-h1. Twitter Growl
+h2. Twitter Growl
 
 I just want to receive growl notifications when my friends update their twitter statuses and I don't want to install the memory hog that is Twitterific.
 
 h2. Installation
 
+# Install "growlnotify":http://growl.info/extras.php#growlnotify from the Growl
+  disk image
 # Edit the config.yml file and update it with your Twitter username and 
-   password
+  password
 # Add a cronjob:
 
 <blockquote><pre><code>
