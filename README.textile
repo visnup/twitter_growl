@@ -8,9 +8,7 @@ h2. Installation
    password
 # Add a cronjob:
 
-<blockquote>
-<code>
+<blockquote><pre><code>
   # twitter-growl
   */5 * * * * twitter-growl/twitter_growl.rb
-</code>
-</blockquote>
+</code></pre></blockquote>
