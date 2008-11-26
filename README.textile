@@ -1,0 +1,16 @@
+h1. Twitter Growl
+
+I just want to receive growl notifications when my friends update their twitter statuses and I don't want to install the memory hog that is Twitterific.
+
+h2. Installation
+
+# Edit the config.yml file and update it with your Twitter username and 
+   password
+# Add a cronjob:
+
+<blockquote>
+<code>
+  # twitter-growl
+  */5 * * * * twitter-growl/twitter_growl.rb
+</code>
+</blockquote>
