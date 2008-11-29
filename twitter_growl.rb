@@ -46,6 +46,7 @@ class TwitterGrowl
     tweets.each do |t|
       created_at = Time.parse(t['created_at'])
       break  if created_at <= last_created_at
+      next   if t['user']['screen_name'] == @config[:user]
 
       growl(t)
     end
