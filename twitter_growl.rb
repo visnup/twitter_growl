@@ -28,7 +28,7 @@ class TwitterGrowl
 
   def growl(tweet)
     options = "--image #{image(tweet['user']['profile_image_url'])} --sticky"
-    open("|growlnotify #{options} #{tweet['user']['screen_name']}", 'w') do |g|
+    open("|growlnotify #{options} #{tweet['user']['screen_name']} 2>/dev/null", 'w') do |g|
       g.write(tweet['text'])
     end
   end
