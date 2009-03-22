@@ -46,7 +46,7 @@ class TwitterGrowl
       end
     end
 
-    open(file) do |f| JSON.parse(f.read) end
+    open(file) { |f| JSON.parse(f.read) }
   end
 
   def growl(tweet)
@@ -58,17 +58,8 @@ class TwitterGrowl
     end
   end
 
-  def sticky?(tweet)
-    keywords = @config[:sticky] || []
-    keywords.any? { |k| tweet['text'].include?(k) } ||
-      user(tweet['user']['id'])['notifications']
-  end
-
   def run
-    tweets =
-      request(@@url) do |f|
-        JSON.parse(f.read)
-      end
+    tweets = request(@@url) { |f| JSON.parse(f.read) }
 
     last_created_at = Time.parse(@config[:last_created_at] || tweets.last['created_at'])
 
@@ -81,7 +72,7 @@ class TwitterGrowl
     end
 
     @config[:last_created_at] = tweets.first['created_at']
-    File.open(@@config, 'w') do |f| f.write(YAML.dump(@config)) end
+    File.open(@@config, 'w') { |f| f.write(YAML.dump(@config)) }
   end
 
   private
@@ -90,6 +81,12 @@ class TwitterGrowl
       open(url, :http_basic_authentication => [ user, password ]) do |u|
         yield(u)
       end
+    end
+
+    def sticky?(tweet)
+      keywords = @config[:sticky] || []
+      keywords.any? { |k| tweet['text'].include?(k) } ||
+        user(tweet['user']['id'])['notifications']
     end
 end
 
