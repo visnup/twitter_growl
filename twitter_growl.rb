@@ -53,7 +53,7 @@ class TwitterGrowl
     #puts tweet['text']
     options = "--image #{image(tweet['user']['profile_image_url'])}"
     options += " --sticky"  if sticky?(tweet)
-    open("|growlnotify #{options} #{tweet['user']['screen_name']} 2>/dev/null", 'w') do |g|
+    open("|growlnotify #{options} @#{tweet['user']['screen_name']} 2>/dev/null", 'w') do |g|
       g.write(tweet['text'])
     end
   end
